@@ -1,0 +1,56 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<link rel="stylesheet" type="text/css" href="/static/css/appointment.css">
+<div class="jumbotron">
+  <div class="container text-center">
+      <div id="head">
+   <h1>{{ title }}</h1>
+          </div>
+
+    <div id="head-p"> <p> Doctor Appointment </p> </div>
+
+  </div>
+</div>
+
+
+
+  <div class="panel-group">
+    <div class="panel panel-default">
+      <div class="panel-heading"> <h3> Doctor Appointment Booked  </h3> </div>
+    <div id="appointment_box">
+
+
+    </div>
+        <table class ="table table-bordered">
+            <tbody>
+            <thead>
+            <tr>
+                <th> Time</th>
+
+            </tr>
+            </thead>
+        <tbody>
+   <tr>
+            <td> {{doctor_reservation.get_reserved_time()}}
+            </td>
+
+
+
+
+
+
+    </tbody>
+    </table>
+
+
+        {% endblock %}

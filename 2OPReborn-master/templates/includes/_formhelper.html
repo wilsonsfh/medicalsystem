@@ -1,0 +1,7 @@
+<!DOCTYPE html>
+<html lang="en">
+{% macro render_field(field) %}
+  {{ field.label }}
+  {{ field(**kwargs)|safe }}
+
+{% endmacro %}

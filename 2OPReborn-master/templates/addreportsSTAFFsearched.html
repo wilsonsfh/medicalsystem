@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+{% block body %}
+{% from "includes/_formhelper.html" import render_field %}
+    <!--etc-->
+ <link rel="stylesheet" type="text/css" href="/static/css/healthnotes.css">
+    <!-- Previous Page(s) -->
+    <a href="../allreports/staffname" class="previous">&#8249; Return to Viewing (Patient Name)</a>
+    <br>
+    <br>
+    <a href="../allreports/staffreport" class="previous">&#8249; Return to Viewing (Medical Report Title)</a>
+    <br>
+    <br>
+
+    <!-- Medical Report Form -->
+    <script>
+
+ //   function searchinto() {
+ //
+ //       if () {
+ //           alert('Verified : NRIC is registered.');
+ //       }
+ //       else {
+ //           alert('Error : NRIC is not registered. Please check or enter a registered NRIC.');
+ //       }
+ //   }
+
+    </script>
+<div class="panel-group">
+    <div class="panel panel-default">
+        <div class="panel-heading titledesign"><h1> <b>Search</b> <i>NRIC</i> for New Medical Report Entry</h1></div>
+
+            {% include 'includes/_message.html' %}
+
+    <form action="" class="myForm" method="POST">
+  <div class="form-group">
+      {{ render_field(report_form.nric, class_="form-control container ") }}
+  </div>
+        <br>
+  <div class="container" >
+     <input class="submitsearchbar btn btn-primary hahasubmitnric" type="submit" value="Search NRIC" >
+      <!-- onclick="confirm('Confirm to submit medical report entry?');" -->
+  </div>
+    <br>
+        </form>
+        </div>
+    </div>
+
+{% endblock %}
+
+

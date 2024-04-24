@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+ <link rel="stylesheet" type="text/css" href="/static/css/healthnotes.css">
+{% block body %}
+
+    <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<h1> Thank you! </h1>
+
+<h2> You just keyed a report entry, for patient ID {{ ReportsItems.getpatientid() }} and patient Name {{ ReportsItems.getpname() }}.
+    <br> Report Title : {{ ReportsItems.getrtitle() }}
+    <br> Report Date : {{ ReportsItems.getrdate() }}
+    <br> Report Description : {{ ReportsItems.getreportdesc() }}
+    <br> Relevant Image : {{ ReportsItems.getimage() }}</h2>
+
+{% endblock %}

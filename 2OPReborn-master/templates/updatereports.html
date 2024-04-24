@@ -1,0 +1,69 @@
+{% extends 'layout.html' %}
+{% block body %}
+{% from "includes/_formhelper.html" import render_field %}
+    <!--etc-->
+ <link rel="stylesheet" type="text/css" href="/static/css/healthnotes.css">
+
+     <!-- Previous Page(s) -->
+    <a href="../allreports/staffname" class="previous">&#8249; Return to Viewing (Patient Name)</a>
+    <br>
+    <br>
+    <a href="../allreports/staffreport" class="previous">&#8249; Return to Viewing (Medical Report Title)</a>
+    <br>
+    <br>
+
+    <!-- Medical Report Form -->
+<div class="panel-group">
+    <div class="panel panel-default">
+        <div class="panel-heading titledesign"><h1> Update for <b><i>{{ eachreport.getpname() }}</i></b>: <i>{{ eachreport.getrtitle() }}</i></h1></div>
+
+    {% include 'includes/_message.html' %}
+
+        <form method="POST" class="myForm">
+  <div class="form-group">
+      {{ render_field(report_form.nric, class_="form-control container disabled ") }}
+  </div>
+  <div class="form-group">
+  {{  render_field(report_form.pname, class_="form-control container disabled") }}
+  </div>
+  <div class="form-group">
+     {{ render_field(report_form.age, class_="form-control container disabled") }}
+  </div>
+  <div class="form-group">
+     {{ render_field(report_form.dateofbirth,type='date', class_="form-control container disabled") }}
+  </div>
+  <div class="form-group">
+     {{ render_field(report_form.gender, class_="container haharadio disabled") }}
+  </div>
+   <div class="form-group">
+     {{ render_field(report_form.countryoforigin, class_="form-control container disabled") }}
+  </div>
+   <div class="form-group">
+     {{ render_field(report_form.allergy, class_="form-control container disabled") }}
+  </div>
+  <div class="form-group">
+       {{ render_field(report_form.rtitle, class_="form-control container") }}
+  </div>
+  <div class="form-group">
+    {{ render_field(report_form.rdate,type='date', class_="form-control container") }}
+  </div>
+        <div class="form-group">
+    {{ render_field(report_form.rtime,type='time', class_="form-control container") }}
+  </div>
+  <div class="form-group">
+   {{ render_field(report_form.reportdesc, rows=10, class_="form_control hahadesc container") }}
+  </div>
+        <br>
+        <br>
+  <div class="container" >
+     <input class="addsubmit btn btn-primary" type="submit" value="Submit" >
+      <!-- onclick="confirm('Confirm to submit medical report entry?');" -->
+  </div>
+    <br>
+        </form>
+        </div>
+    </div>
+
+{% endblock %}
+
+

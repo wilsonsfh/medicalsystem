@@ -1,0 +1,206 @@
+{% extends 'layout.html' %}
+{% block body %}
+    {% from "includes/_formhelper.html" import render_field %}
+ <link rel="stylesheet" type="text/css" href="/static/css/healthnotes.css">
+
+
+<style>
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 300px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 200px;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+     {% include 'includes/_message.html' %}
+        <script>
+    function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+    </script>
+
+
+
+    <!-- All Medical Reports -->
+   <div class="jumbotron">
+ <div class="container text-center">
+      <div id="head">
+   <h1>All Medical Reports</h1>
+      </div>
+    <div id="head-p">
+        <p> Your personal medical report corner. </p>
+        <br>
+        <hr> <!-- Line -->
+        <br>
+        <br>
+                <!-- Sorting reports by -->
+         <div class="container">
+				<div class="row">
+					<div class="col">
+                        <div class="textdesign" style="font-style:italic">Sorted by</div>
+					</div>
+				</div>
+         </div>
+        <br>
+
+        <div class="container textdesign " style="float:left; text-align:center;">
+            <a class="selected " style="margin-top:10px; padding: 8px 16px;"  href="#" role="button">Medical Report Title</a>
+        </div>
+        </div>
+    </div>
+  </div>
+
+
+        <div class="panel-group">
+    <div class="panel panel-default">
+    <div class="panel-heading titledesign">
+         <h1 style="color:black;"> Sorting by Medical Report Title</h1>
+     </div>
+    </div>
+    </div>
+
+    <!-- JavaScript -->
+        <div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+    <h1 style="color:white;"> Health Notes </h1>
+    <hr>
+    <a href="../allreports/patient">All Medical Reports</a>
+    <a href="../discardedreports/patient">Medical Reports Bin</a>
+
+    </div>
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+
+    <div class="panel-group">
+    <div class="panel panel-default" >
+    <br>
+       <!-- Filter Function -->
+    <div class="container">
+        <form method="POST">
+            {{ render_field(form.item_name, class_="searchbarcss", placeholder="Quickly find your report") }}
+            <input type="submit" value="Filter" class="submitsearchbar btn btn-primary">
+        </form>
+    </div>
+    <br>
+    <hr>
+
+
+     <!-- Displaying Reports -->
+      {% for report in ReportList %} <!--checking if patient id (Nric) matches -->
+{% if report.getstatus() == 1 and report.getpname() == name%}
+
+    <br>
+
+        <div class="containerhaha" style="width:80%; margin-left:2%; display:inline-block;" >
+
+     <div class="card" >
+         <span style="color:dodgerblue; font-size: 18px;">
+             <img style="width:40px; margin-right:20px; margin-left:5px;" class="card-img-top" src="../static/images/medical-reports.png" alt=""> <b>{{ report.getrtitle() }}</b>
+             <a style="float:right;" href="/{{ report.getreportid() }}">
+             <span style="color:black; font-size:13px;"><i>More Details</i></span><img style="width:40px;" src="/static/images/more-details-reports.png">
+             </a>
+         </span>
+         <hr>
+         <br>
+         <hr>
+         <!-- Update and Delete -->
+         <div style="display:inline-block; margin-top:1%; margin-bottom:1% ">
+          <div class="" style="font-size:18px;">
+            <form action="{{ url_for('discardreportpatient', reportid=report.getreportid()) }}" method="post">
+            <input style="width:95%; margin-left:2.5%;" type="submit" value="Discard" class="btn btn-basic container-fluid" onclick="return confirm('Do you want to discard selected medical report?');">
+            </form>
+         </div>
+        </div>
+
+         <hr>
+         <div class="card-body">
+             <p class="card-text" style="font-size:14px;">
+                 <span style="color:black;">Patient Name: </span><span style="color:blue">{{ report.getpname() }} </span> <br>
+                 <span style="color:black;">Patient ID (NRIC):</span><span style="color:blue"> {{ report.getnric() }} </span>  <br>
+                 <span style="color:black;">Report Date and Time:</span><span style="color:blue"> {{ report.getrdate() }}, {{ report.getrtime() }} </span><span style="color:black"><i>(24hr)</i></span>  <hr> <br>
+
+                  <span style="color:black;">Report Description:</span> <br>
+             {{ report.getreportdesc() }} <br><br> <hr>
+
+             </p>
+        </div>
+
+     </div>
+    </div>
+
+     <br>
+    <br>
+
+    {% else %}
+
+        <br>
+    <br>
+    <h3 style="color:darkgrey; margin-left:35%;"><i>Search result has no match.</i> </h3>
+    <br>
+    <br>
+
+        {% endif %}
+     {% endfor %}
+            {% for nothing in nothingfound %} <!--checking if patient id (Nric) matches -->
+
+            <br>
+            <br>
+            <h3 style="color:darkgrey; margin-left:35%;"><i>Search result has no match.</i> </h3>
+            <br>
+            <br>
+
+            {% endfor %}
+
+     </div>
+
+    </div>
+
+{% endblock %}
+
+

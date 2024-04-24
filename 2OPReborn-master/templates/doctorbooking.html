@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+ <head>
+
+
+
+
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <meta name="description" content="">
+   <meta name="author" content="">
+
+
+   <title>ServIT's Doctor - Dashboard</title>
+
+   <!-- Bootstrap core CSS-->
+   <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+   <!-- Custom fonts for this template-->
+   <link href="/static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+   <!-- Page level plugin CSS-->
+   <link href="/static/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+
+   <!-- Custom styles for this template-->
+   <link href="/static/css/sb-admin.css" rel="stylesheet">
+<style>
+.btn-success {
+    float: right;
+    color: #fff;
+    background-color: #28a745;
+    border-color: #28a745;
+
+}
+</style>
+ </head>
+
+ <body id="page-top">
+
+   <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+
+     <a class="navbar-brand mr-1" href="index.html"></a>
+
+
+
+
+
+     <!-- Navbar -->
+      <span style="color:lightgrey;">ServIT - Staff Panel</span>
+     <ul class="navbar-nav ml-auto ml-md-0">
+       <li class="nav-item dropdown no-arrow mx-1">
+         <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+         </a>
+
+       </li>
+
+     </ul>
+                 <div class="header_top_extra d-flex flex-row align-items-center justify-content-start ml-auto">
+
+                             <div class="header_top_nav">
+                                <ul class="d-flex flex-row align-items-center justify-content-start">
+                                             <span style="color:deepskyblue; margin-right:10px;">{{ session['name'] }}</span>
+
+                                                 <a href ="/stafflogout" ><span style="color:white; border-left:solid grey 1px; padding-left:10px;">Logout </span> </a>
+
+
+                                </ul>
+                             </div>
+                       </div>
+   </nav>
+
+
+    <div id="wrapper">
+
+
+
+      <div id="content-wrapper">
+
+
+        <div class="container-fluid">
+
+          <!-- Breadcrumbs-->
+             <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="/inde">Dashboard</a>
+            </li>
+                <li class="breadcrumb-item">
+              <a href="/appointment"> Appointment </a>
+            </li>
+            <li class="breadcrumb-item active">Doctor Booking</li>
+          </ol>
+
+          <!-- Page Content -->
+          <h3> Book Timeslots  </h3>
+        <div>
+          <hr>
+  {% include 'includes/_message.html' %}
+          <br>
+     <div class="card-header">
+
+              <i class="fas fa-table"></i>
+              Book your preferred  timeslots</div>
+
+                     <div class="table-responsive">
+                    <table class="table table-bordered">
+                     <form method = "post" action = "">
+    {% for weekday in weekdays %}
+        <tr>
+          <th> {{ weekday }} </th>
+            {% for timeslot in timeslots %}
+              <td><input id="{{ weekday + timeslot }}" class="input-helper" type=checkbox  data-bind="checked: params.availToStream" checked  onchange ="isChecked()" name="{{ weekday + ':' + '' + timeslot }}">{{ timeslot }} </td>
+            <script>
+          function isChecked() {
+            document.getElementById("{{weekday + timeslot }}").style.backgroundColor = "red";
+          }
+          </script>
+            {% endfor %}
+
+        </tr>
+        {% endfor %}
+
+
+
+                          </tr>
+                        </tbody>
+
+                      </table>
+    <input type="submit" value="Submit" class="btn btn-success btn-fw"/>
+                    </div>
+      </div>
+    </div>
+
+                    </form>
+
+
+                  </div>
+                  </div>
+    </div>
+
+
+
+        <!-- /.container-fluid -->
+
+        <!-- Sticky Footer -->
+<footer>
+ <div class="container my-auto">
+   <div class="copyright text-center my-auto">
+     <span style="font-size:16px;"> ServIT+  |  Serving with Ease. </span>
+   </div>
+ </div>
+</footer>
+
+      </div>
+      <!-- /.content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin.min.js"></script>
+
+  </body>
+
+</html>

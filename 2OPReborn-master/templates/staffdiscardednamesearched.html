@@ -1,0 +1,200 @@
+{% extends 'layout.html' %}
+{% block body %}
+    {% from "includes/_formhelper.html" import render_field %}
+ <link rel="stylesheet" type="text/css" href="/static/css/healthnotes.css">
+
+
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+h1 {color:white; }
+h5 {color:aquamarine;}
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 300px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 200px;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+     {% include 'includes/_message.html' %}
+        <script>
+    function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+    </script>
+
+      <!-- JavaScript -->
+        <div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+    <h1> Health Notes </h1>
+    <hr>
+    <a href="../allreports/staffreport">All Medical Reports</a>
+    <a href="#">Consult your doctor</a>
+    <a href="../discardedreports/staffreport">Medical Reports Bin</a>
+    </div>
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+
+    <!-- All Medical Reports -->
+   <div class="jumbotron">
+ <div class="container text-center">
+      <div id="head">
+   <h1>All Medical Reports</h1>
+      </div>
+    <div id="head-p">
+        <p> Your personal medical report corner. </p>
+        <br>
+        <hr> <!-- Line -->
+        <br>
+        <br>
+                <!-- Sorting reports by -->
+         <div class="container">
+				<div class="row">
+					<div class="col">
+                        <div class="textdesign" style="font-style:italic">Sort by</div>
+					</div>
+				</div>
+         </div>
+        <br>
+
+        <div class="container textdesign " style="float:left; text-align:center;">
+            <a class="selected"  href="../discardedreports/staffname" role="button">Patient Name</a> <br>
+            <a class="sorting " style="margin-top:10px;"  href="../discardedreports/staffreport" role="button">Medical Report Title</a>
+        </div>
+        </div>
+    </div>
+  </div>
+
+
+        <div class="panel-group">
+    <div class="panel panel-default">
+    <div class="panel-heading titledesign">
+         <h1 style="color:black;"> Sorting by Patient Name</h1>
+     </div>
+    </div>
+    </div>
+
+    <!-- Section after Filter function -->
+    <div class="panel-group">
+    <div class="panel panel-default" >
+    <br>
+       <!-- Filter Function -->
+    <div class="container">
+        <form method="POST">
+            {{ render_field(form.item_name, class_="searchbarcss", placeholder="Quickly find your report") }}
+            <input type="submit" value="Filter" class="submitsearchbar btn btn-primary">
+        </form>
+    </div>
+    <br>
+    <hr>
+
+    <!-- Add Reports -->
+         <div style="margin:0.5% 2.5% 0 0">
+        <div style="display:inline-block; float:right;" >
+        <a style="width:120%;" class="btn btn-info" href="../addreports/searchNRIC" role="button">Add Reports</a>
+        </div>
+        </div>
+
+     <!-- Displaying Reports -->
+      {% for report in ReportList %} <!--checking if patient id (Nric) matches -->
+{% if report.getstatus() == 0 %}
+    <br>
+
+        <div class="containerhaha" style="width:80%; margin-left:2%; display:inline-block;" >
+
+     <div class="card" >
+         <span style="color:lightcoral; font-size: 18px;">
+            <img style="width:40px; margin-right:20px; margin-left:5px;" class="card-img-top" src="../static/images/patient-icon.png" alt=""> <b>{{ report.getpname() }}</b> <br>
+         </span>
+         <hr>
+        <!-- Update and Delete -->
+         <div style="display:inline-block; text-align:center; pointer-events:auto; margin-top:1%; margin-bottom:1%; ">
+         <div class="col-md-6" style="font-size:18px;">
+            <form action="{{ url_for('retrievereportname', reportid=report.getreportid()) }}" method="post">
+            <input style="width:100%;" type="submit" value="Recover" class="btn btn-success" onclick="return confirm('Do you want to recover selected medical report?');">
+            </form>
+         </div>
+             <div class="col-md-6" style="font-size:18px;">
+              <form action="{{ url_for('permadeletereportname', reportid=report.getreportid()) }}" method="post">
+            <input style="width:100%;" type="submit" value="Permanently Delete" class="btn btn-danger" onclick="return confirm('Are you sure you want to PERMANENTLY delete selected medical report? There is no going back.');">
+            </form>
+             </div>
+        </div>
+         <hr>
+         <div class="card-body">
+             <p class="card-text" style="font-size:14px;">
+                 <span style="color:black;">Patient ID (NRIC):</span><span style="color:orangered"> {{ report.getnric() }} </span>  <br>
+                 <span style="color:black;">Report Title: </span><span style="color:orangered">{{ report.getrtitle() }} </span> <br>
+               <span style="color:black;">Report Date and Time:</span><span style="color:orangered"> {{ report.getrdate() }}, {{ report.getrtime() }} </span><span style="color:black"><i>(24hr)</i></span> <br> <hr>
+
+
+             </p>
+        </div>
+
+     </div>
+    </div>
+     <br>
+    <br>
+    {% else %}
+
+     <br>
+    <br>
+    <h3 style="color:darkgrey; margin-left:35%;"><i>Search result has no match.</i> </h3>
+    <br>
+    <br>
+
+        {% endif %}
+     {% endfor %}
+
+     {% for nothing in nothingfound %} <!--checking if patient id (Nric) matches -->
+            <br>
+            <br>
+            <h3 style="color:darkgrey; margin-left:35%;"><i>Search result has no match.</i> </h3>
+            <br>
+            <br>
+
+            {% endfor %}
+
+     </div>
+
+    </div>
+
+{% endblock %}
+

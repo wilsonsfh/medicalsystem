@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+ <head>
+
+
+
+
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <meta name="description" content="">
+   <meta name="author" content="">
+
+
+   <title>ServIT's Doctor - Dashboard</title>
+
+   <!-- Bootstrap core CSS-->
+   <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+   <!-- Custom fonts for this template-->
+   <link href="/static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+   <!-- Page level plugin CSS-->
+   <link href="/static/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+
+   <!-- Custom styles for this template-->
+   <link href="/static/css/sb-admin.css" rel="stylesheet">
+
+ </head>
+
+ <body id="page-top">
+
+   <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+
+     <a class="navbar-brand mr-1" href="index.html"></a>
+
+
+
+
+
+     <!-- Navbar -->
+      <span style="color:lightgrey;">ServIT - Staff Panel</span>
+     <ul class="navbar-nav ml-auto ml-md-0">
+       <li class="nav-item dropdown no-arrow mx-1">
+         <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+         </a>
+
+       </li>
+
+     </ul>
+                 <div class="header_top_extra d-flex flex-row align-items-center justify-content-start ml-auto">
+
+                             <div class="header_top_nav">
+                                <ul class="d-flex flex-row align-items-center justify-content-start">
+                                             <span style="color:deepskyblue; margin-right:10px;">{{ session['name'] }}</span>
+
+                                                 <a href ="/stafflogout" ><span style="color:white; border-left:solid grey 1px; padding-left:10px;">Logout </span> </a>
+
+
+                                </ul>
+                             </div>
+                       </div>
+   </nav>
+
+
+    <div id="wrapper">
+
+
+      <div id="content-wrapper">
+
+        <div class="container-fluid">
+
+          <!-- Bre0adcrumbs-->
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="/inde">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item active">Appointment</li>
+          </ol>
+
+          <!-- Page Content -->
+          <h1>Appointment </h1>
+          <hr>
+             <div class="row">
+             <div class="col-xl-3 col-sm-6 mb-3">
+              <div class="card text-white bg-warning o-hidden h-100">
+                <div class="card-body">
+                  <div class="card-body-icon">
+                    <i class="fas fa-fw fa-check-square"></i>
+                  </div>
+                  <div class="mr-5">Booking Slots </div>
+                </div>
+                <a class="card-footer text-white clearfix small z-1" href="/doctorslots">
+                  <span class="float-left">Book Slots</span>
+                  <span class="float-right">
+                    <i class="fas fa-angle-right"></i>
+                  </span>
+                </a>
+              </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 mb-3">
+              <div class="card text-white bg-success o-hidden h-100">
+                <div class="card-body">
+                  <div class="card-body-icon">
+                    <i class="fas fa-fw fa-calendar"></i>
+                  </div>
+                  <div class="mr-5"> View Booked Slots </div>
+                </div>
+                <a class="card-footer text-white clearfix small z-1" href="/status">
+                  <span class="float-left"> View Booked Slots </span>
+                  <span class="float-right">
+                    <i class="fas fa-angle-right"></i>
+                  </span>
+                </a>
+              </div>
+            </div>
+
+
+                             <div class="col-xl-3 col-sm-6 mb-3">
+              <div class="card text-white bg-primary o-hidden h-100">
+                <div class="card-body">
+                  <div class="card-body-icon">
+                    <i class="fas fa-fw fa-users"></i>
+                  </div>
+                  <div class="mr-5"> Patient's Appointment Status   </div>
+                </div>
+                <a class="card-footer text-white clearfix small z-1" href="/staffappointment">
+                  <span class="float-left"> View patient's appointment </span>
+                  <span class="float-right">
+                    <i class="fas fa-angle-right"></i>
+                  </span>
+                </a>
+              </div>
+            </div>
+        </div>
+           <div class="row">
+                      <div class="col-xl-3 col-sm-6 mb-3">
+              <div class="card text-white bg-danger o-hidden h-100">
+                <div class="card-body">
+                  <div class="card-body-icon">
+                    <i class="fas fa-fw fa-comments"></i>
+                  </div>
+                  <div class="mr-5"> Appointment Statistic </div>
+                </div>
+                <a class="card-footer text-white clearfix small z-1" href="/barchart">
+                  <span class="float-left">View Details</span>
+                  <span class="float-right">
+
+                    <i class="fas fa-angle-right"></i>
+
+                  </span>
+                </a>
+
+
+              </div>
+            </div>
+        <!-- /.container-fluid -->
+           </div>
+        </div>
+      </div>
+    </div>
+
+        <!-- Sticky Footer -->
+   <footer>
+ <div class="container my-auto">
+   <div class="copyright text-center my-auto">
+     <span style="font-size:16px;"> ServIT+  |  Serving with Ease. </span>
+   </div>
+ </div>
+</footer>
+
+      </div>
+      <!-- /.content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+    </a>
+
+    
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin.min.js"></script>
+
+  </body>
+
+</html>

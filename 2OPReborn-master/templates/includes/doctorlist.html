@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<link rel="stylesheet" type="text/css" href="/static/css/appointment.css">
+<div class="jumbotron">
+  <div class="container text-center">
+      <div id="head">
+   <h1>{{ title }}</h1>
+          </div>
+
+    <div id="head-p"> <p> Doctor Opening Hours List </p> </div>
+
+  </div>
+</div>
+
+
+
+  <div class="panel-group">
+    <div class="panel panel-default">
+      <div class="panel-heading"> <h3> Doctor List </h3> </div>
+    <div id="appointment_box"></div>
+
+
+</div>
+  </div>
+{% endblock %}

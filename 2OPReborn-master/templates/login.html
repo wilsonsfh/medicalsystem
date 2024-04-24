@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Login V17</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="/static/images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/css/utils.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/mains.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+<!--===============================================================================================-->
+<style>
+span {color:green;}
+</style>
+</head>
+<body>
+
+      {% if form.errors %}
+        <div class="alert alert-danger">
+            <ul>
+                {% for field_name, field_errors in form.errors|dictsort if field_errors %}
+                    {% for error in field_errors %}
+                        <li>{{ form[field_name].label }}: {{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+	{%  from "includes/_formhelper.html" import render_field %}
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+					 <form  class="login100-form validate-form" method="post">
+					<span class="login100-form-title p-b-34">
+							    <div class="logo">
+        <br>
+        <a href="#">Serv<span>IT + </span></a>
+      </div>
+
+						<br>
+						<br>
+						Patient Login
+					</span>
+
+					<div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20">
+						{{ render_field(form.id, class='input100') }}
+						<span class="focus-input100"></span>
+					</div>
+					<div class="wrap-input100 rs2-wrap-input100 validate-input m-b-20">
+						{{ render_field(form.password, class_='input100') }}
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn">
+							Sign in
+						</button>
+
+							  {% for message in get_flashed_messages() %}
+    <div class="alert alert-success">{{ message }}
+	</div>
+  {% endfor %}
+						<a href="#" class="txt2">
+
+						</a>
+					</div>
+
+					<div class="w-full text-center">
+						<a href="/register" class="txt3">
+							Sign Up
+						</a>
+					</div>
+
+				</form>
+
+				<div class="login100-more" style="background-image: url('/static/images/patient.png');"></div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+</body>
+</html>

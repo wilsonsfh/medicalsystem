@@ -1,0 +1,112 @@
+{% extends 'invlayout.html' %}
+
+
+{% block body %}
+<!-- Home -->
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+{% endblock %}
+    <!--Buttons Med and tools-->
+
+{% block div %}
+
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <script type="text/javascript">
+    function name(){if (document.getElementById("sort").value="name"){
+        $(document).ready(function(){
+            $('#myTable').tablesorter();
+        });
+
+    }}
+
+</script>
+    {% from "includes/_formhelper.html" import render_field %}
+    <form name="search" method="POST" action="" enctype="multipart/form-data">
+     {{ render_field(form.item_name, class_="form-control") }}
+    <br>
+       <input type="submit" value="search">
+
+    </form>
+
+    <br><br>
+
+    <form action="">
+    <label>Sort By: </label>
+  <select id="sort" name="sort by" onchange="location = this.value;">
+    <option value="{{ url_for('medtools')}}" click=id>id</option>
+    <option value="{{ url_for('medtoolsinvsortbyname')}}">name</option>
+    <option value="{{ url_for('medtoolsinvsortbytype')}}">type</option>
+     <option value="{{ url_for('medtoolsinvsortbyprice')}}">price</option>
+      <option value="{{ url_for('medtoolsinvsortbyqty')}}">qty</option>
+  </select>
+  <br><br>
+</form>
+    <!--Table Part-->
+    <h2>Inventory</h2>
+          <div class="table-responsive">
+            <table class="table table-striped table-sm" id="myTable">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Type</th>
+                  <th>Price</th>
+                  <th>Quantity</th>
+                  <th>Description</th>
+                  <th>Status</th>
+                    <th>Delete Item</th>
+                </tr>
+              </thead>
+              <tbody>
+
+        {% for medicalitem in medicalitems %}
+            {%  if medicalitem.get_status() == "A"%}
+                {% if medicalitem.get_type()=="Medical Tools" %}
+            <tr>
+                 <td><a href="/item/description/{{medicalitem.get_id()}}">{{ medicalitem.get_name() }}</a></td>
+                {% if  medicalitem.get_type().lower() == "medicine" %}
+                    <td> Medicine </td>
+                {% else %}
+                    <td>Medical Tools</td>
+                {% endif %}
+
+                <td>{{ medicalitem.get_price() }}</td>
+                <td>{{ medicalitem.get_qty() }}</td>
+                <td>{{ medicalitem.get_briefdesc() }}</td>
+                 {% if  medicalitem.get_status() == "I" %}
+                    <td> Inactive </td>
+                {% elif medicalitem.get_status() == "A" %}
+                    <td> Active </td>
+            <td><form action="{{url_for('delete_item', id=medicalitem.get_id())}}" method="post">
+                    <input type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete this item?');"></form></td>
+
+            </tr>
+           {% endif %}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+              </tbody>
+            </table>
+          </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<style>
+.button {
+padding: 30px 40px;
+text-align: center;
+display: inline-block;
+}
+</style>
+<!--<h1>Current Queue Number</h1>-->
+<!--{% for p in queue_no %}-->
+    <!--{{ start_no }}-->
+<!--{% endfor %}-->
+<!--<button onclick="" ></button>-->
+<br>
+<br>
+<form action="/getnumber" method="post">
+    <input name="nric" placeholder="Enter your nric" style='width: 20%; margin:auto;' class="form-control"/>
+    <br>
+    <button type="submit" style='margin-left:46%;' class="btn btn-primary">Get your queue number</button>
+
+</form>
+
+<br>
+<br>
+
+<h1 style="text-align:center;">Your queue number is: <span style="color:dimgrey">{{queuenumber}}</span></h1>
+<br>
+{% endblock %}

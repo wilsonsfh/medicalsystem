@@ -1,0 +1,57 @@
+{% extends 'invlayout.html' %}
+
+
+{% block body %}
+<!-- Home -->
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+{% endblock %}
+    <!--Buttons Med and tools-->
+
+{% block div %}
+
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <!--Info part-->
+    {% for medicalitem in medicalitems %}
+    <h2 style="font-weight:bold" style="text-decoration:none">{{ medicalitem.get_name() }}</h2>
+    <img src={{ medicalitem.get_fileurl() }}/>
+    <h3>Description</h3>
+    <ul>
+    <li>{{ medicalitem.get_description() }}</li>
+    </ul>
+
+    <br>
+    <p>Price: {{ medicalitem.get_price() }}</p>
+    <p>Qty: {{ medicalitem.get_qty() }}</p>
+    <br>
+    <br>
+    <p>Minimum Threshold: {{ medicalitem.get_min() }}</p>
+    <p>Maximum Threshhold: {{ medicalitem.get_max() }}</p>
+    <button>Add stock</button>
+    <button>Remove stock</button>
+    <button>Delete</button>
+    <br>
+    <button>Sell</button>
+    {% endfor %}
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+{% endblock %}

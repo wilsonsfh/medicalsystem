@@ -1,0 +1,148 @@
+{% extends 'reportlayout.html' %}
+{% block body %}
+    {% from "includes/_formhelper.html" import render_field %}
+ <link rel="stylesheet" type="text/css" href="/static/css/healthnotes.css">
+
+
+<style>
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 300px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 200px;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+     {% include 'includes/_message.html' %}
+        <script>
+    function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+    </script>
+
+ <!-- Previous Page(s) -->
+
+    <a href="../allreports/patient" style="padding: 8px 16px;" class="back previous">&#8249; Return to All Reports</a>
+    <br>
+    <br>
+      <!-- JavaScript -->
+        <div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+   <h1 style="color:white;"> Health Notes </h1>
+    <hr>
+    <a href="../allreports/patient">All Medical Reports</a>
+    <a href="../discardedreports/patient">Medical Reports Bin</a>
+    </div>
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+    <!-- All Medical Reports -->
+   <div class="jumbotron">
+ <div class="container text-center">
+      <div id="head">
+   <h1>Medical Report Details</h1>
+      </div>
+    <div id="head-p">
+        <p> Your personal medical report corner. </p>
+        <br>
+        <hr> <!-- Line -->
+        <br>
+        <br>
+
+
+    <br>
+        <!-- Section after Filter function -->
+    <div class="panel-group">
+    <div class="panel panel-default">
+    <br>
+
+
+     <!-- Displaying Reports -->
+      {% for report in reports %} <!--checking if patient id (Nric) matches -->
+{% if report.getstatus() == 0 %}
+
+    {% else %}
+
+        <div class="containerhaha" style="width:98%; margin-left:0.5%; margin-bottom:2%; display:inline-block;" >
+
+     <div class="card" >
+         <span style="color:dodgerblue; font-size: 18px;">
+             <img style="width:40px; margin-right:20px; margin-left:5px;" class="card-img-top" src="../static/images/medical-reports.png" alt=""> <b>{{ report.getrtitle() }}</b>
+         </span>
+         <br>
+         <hr>
+         <br>
+         <div class="card-body">
+             <p class="card-text" style="font-size:14px;">
+                 <span style="color:black;">Patient Name: </span><span style="color:blue">{{ report.getpname() }} </span> <br><br>
+                 <span style="color:black;">Patient ID (NRIC):</span><span style="color:blue"> {{ report.getnric() }} </span>  <br><br>
+                 <span style="color:black;">Age:</span><span style="color:blue"> {{ report.getage() }} </span>  <br><br>
+                 <span style="color:black;">Date of Birth:</span><span style="color:blue"> {{ report.getdateofbirth() }} </span>  <br><br>
+                 <span style="color:black;">Gender:</span><span style="color:blue"> {{ report.getgender() }} </span>  <br><br>
+                 <span style="color:black;">Country of Origin:</span><span style="color:blue"> {{ report.getcountryoforigin() }} </span>  <br><br>
+                 <span style="color:black;">Allergy:</span><span style="color:blue"> {{ report.getallergy() }} </span>  <br><br>
+                 <span style="color:black;">Report Date and Time:</span><span style="color:blue"> {{ report.getrdate() }}, {{ report.getrtime() }} </span><span style="color:black"><i>(24hr)</i></span>  <br><br> <hr> <br>
+                <span style="color:black;"><i>Report Description:</i></span> <br> <br>
+             {{ report.getreportdesc() }} <br> <br> <hr>
+
+             </p>
+        </div>
+
+     </div>
+    </div>
+
+     <br>
+
+        {% endif %}
+     {% endfor %}
+
+     </div>
+
+    </div>
+
+{% endblock %}
+

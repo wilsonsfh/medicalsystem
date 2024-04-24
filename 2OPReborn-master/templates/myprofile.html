@@ -1,0 +1,157 @@
+{% extends 'layout.html' %}
+{% block body %}
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+h1 {color:white; }
+h5 {color:aquamarine;}
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 300px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 200px;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+
+<script>
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+</script>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+{%  from "includes/_formhelper.html" import render_field %}
+
+<link rel="stylesheet" type="text/css" href="/static/css/appointment.css">
+<div class="jumbotron">
+  <div class="container text-center">
+      <div id="head">
+   <h1>{{ title }}</h1>
+      </div>
+  </div>
+</div>
+
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <h1> My Profile  </h1>
+    <hr>
+
+
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-md-3 ">
+		     <div class="list-group ">
+              <a href="/" class="list-group-item list-group-item-action active">Home</a>
+
+
+            </div>
+		</div>
+		<div class="col-md-9">
+		    <div class="card">
+		        <div class="card-body">
+		            <div class="row">
+		                <div class="col-md-12">
+		                    <h4>Your Profile</h4>
+		                    <hr>
+		                </div>
+		            </div>
+                     {% for list in list%}
+		            <div class="row">
+		                <div class="col-md-12">
+                              <div class="form-group row">
+                                <label for="username" class="col-4 col-form-label">Name</label>
+                                <div class="col-8">
+
+                                    {{list.getname()}}
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="name" class="col-4 col-form-label"> NRIC </label>
+                                <div class="col-8">
+                                  {{list.getnric()}}
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="lastname" class="col-4 col-form-label">Age</label>
+                                <div class="col-8">
+                                  {{list.getage()}}
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="text" class="col-4 col-form-label"> Date of Birth </label>
+                                <div class="col-8">
+                                 {{list.getdateofbirth()}}
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="select" class="col-4 col-form-label">Gender </label>
+                                <div class="col-8">
+                                    {{list.getgender()}}
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="email" class="col-4 col-form-label">Allergy</label>
+                                <div class="col-8">
+                                 {{list.getallergy()}}
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="publicinfo" class="col-4 col-form-label">Country</label>
+                                <div class="col-8">
+                                    {{list.getcountryoforigin()}}
+                                </div>
+                              </div>
+                             {% endfor %}
+                            </div>
+		            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+  {% endblock %}

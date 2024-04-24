@@ -1,0 +1,123 @@
+
+{% extends 'layout.html' %}
+{% block body %}
+    {% from "includes/_formhelper.html" import render_field %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<link rel="stylesheet" type="text/css" href="/static/css/appointment.css">
+<div class="jumbotron">
+  <div class="container text-center">
+      <div id="head">
+   <h1>{{ title }}</h1>
+          </div>
+    <div id="head-p"> <p> Contact Us Today</p> </div>
+  </div>
+    <iframe src="http://free.timeanddate.com/clock/i6k7o112/n236/tlsg/tt0/tw0/tm1/td1/th1/ts1/tb4" frameborder="0" width="83" height="34"></iframe>
+</div>
+
+    <!-- Page Content -->
+    <div class="container">
+
+      <div class="row">
+      <div class="col-8">
+          <div class="card">
+                    <div class="card-body">
+          <h2>Contact Us </h2>
+
+
+    {% if form.errors %}
+        <div class="alert alert-danger">
+            <ul>
+                {% for field_name, field_errors in form.errors|dictsort if field_errors %}
+                    {% for error in field_errors %}
+                        <li>{{ form[field_name].label }}: {{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    <form method="POST" action="">
+         <div class="form-group">
+
+            {{ render_field(form.Topic, class_="form-control") }}
+        </div>
+         <div class="form-group">
+            {{ render_field(form.Email, class_="form-control") }}
+        </div>
+        <div class="form-group">
+
+            {{ render_field(form.Message, class_="form-control",rows="5") }}
+        </div>
+    <div class="form-group col-md-1">
+                    <input type="submit" value="Submit" class="btn btn-info"/>
+                </div>
+    </form>
+                    </div>
+          </div>
+      </div>
+
+        <div class="col-sm-4">
+            <h2> Our Location</h2>
+            <div class="mapouter"><div class="gmap_canvas"><iframe width="446" height="362" id="gmap_canvas" src="https://maps.google.com/maps?q=nanyang%20poly&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.embedgooglemap.net">embedgooglemap.net</a></div><style>.mapouter{text-align:right;height:362px;width:446px;}.gmap_canvas {overflow:hidden;background:none!important;height:362px;width:446px;}</style></div>
+
+          <address>
+            <strong>ServIT </strong>
+            <br>180 Ang Mo Kio Ave 8
+            <br>Singapore 569830
+            <br>
+            <abbr >Tel :</abbr>
+            64515115
+            <br>
+            <abbr>Email:</abbr>
+            <a href="mailto:#">ServIT@gmail.com</a>
+          </address>
+        </div>
+      </div>
+    </div>
+
+      <!-- /.row -->
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,185 @@
+{% extends 'layout.html' %}
+{% block body %}
+{%  from "includes/_formhelper.html" import render_field %}
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+h1 {color:white; }
+h5 {color:aquamarine;}
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 300px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 200px;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+
+<script>
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+</script>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<link rel="stylesheet" type="text/css" href="/static/css/appointment.css">
+<div class="jumbotron">
+  <div class="container text-center">
+      <div id="head">
+          <br>
+   <h1>{{ title }}</h1>
+          </div>
+    <div id="head-p"> <p> Request for  new appointment system </p> </div>
+  </div>
+    <iframe src="http://free.timeanddate.com/clock/i6k7o112/n236/tlsg/tt0/tw0/tm1/td1/th1/ts1/tb4" frameborder="0" width="83" height="34"></iframe>
+</div>
+
+
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <h1> Appointment </h1>
+    <hr>
+    <a href="#">Book Appointment</a>
+  <a href="/myappointment"> My Appointment </a>
+
+</div>
+
+<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+
+        {% for message in get_flashed_messages() %}
+
+
+      <div class="alert alert-warning" role="alert">{{ message }}</div>
+{% endfor %}
+
+
+ <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="row">
+           <div class="col-lg-12 grid-margin stretch-card">
+              <div class="row flex-grow">
+                <div class="col-6">
+
+                 <div class="panel panel-primary">
+      <div class="panel-heading"><span class="glyphicon glyphicon-calendar"></span> Book An Appointment</div>
+      <div class="panel-body">
+
+
+
+                     <form method = "POST" action = "/bookanappointment">
+                        <div class="form-group">
+
+                                    {{ render_field(aform.reservation_date,placeholder="DD/MM/YYYY") }}
+</div>
+
+
+                               <div class="row-sm-3">
+                                    {{ render_field(aform.reservation_time) }}
+
+</div>
+
+                                 <div class="row-sm-3">
+                                     {{ render_field(aform.appointment_type)}}
+                                </div>
+
+
+<div>
+     <button type="submit" id="button" class="btn btn-sucess mr 10 ">Submit</button>
+</div>
+
+                     </form>
+                    </div>
+</div>
+                            </div>
+
+  <div class="col-4">
+
+<div class="card text-center">
+  <div class="card-header">
+<span class="glyphicon glyphicon-bullhorn"></span>  <h4>How to book an appointment? </h4>
+  </div>
+  <div class="card-body">
+      <p class="card-text">   1. Select your preferred Time  </p>
+      <p class="card-text">   2. Select your preferred Date   </p>
+      <p class="card-text">   3. Select your Appointment Type </p>
+
+  </div>
+</div>
+  </div>
+              </div>
+<br>
+<div class="row">
+          <div class="col-lg-12 grid-margin stretch-card">
+              <div class="row flex-grow">
+                <div class="col-6">
+
+                </div>
+              </div>
+          </div>
+</div>
+
+<!--<-->
+</div>
+
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+<br>
+<br>
+              <br>
+              <br>
+
+{% endblock %}
+                  </div>
+
+
+<!-- container -->
+
+                  </div>
+                </div>
+              </div>

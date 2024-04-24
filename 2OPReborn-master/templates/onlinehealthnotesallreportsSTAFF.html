@@ -1,0 +1,63 @@
+{% extends 'layout.html' %}
+{% block body %}
+    <!--etc-->
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+    <link rel="stylesheet" type="text/css" href="/static/css/healthnotes.css">
+
+    <!--display codes begins here-->
+    <div class="container">
+        <form>
+            <input class="searchbarcss" type="text" name="search" placeholder="Quickly find your report"> <!-- magnifying glass dw come out-->
+            <button class="submitsearchbar btn btn-info" value="search" type="submit">Search </button>
+        </form>
+    </div>
+    <br>
+
+        <div class="header_nav" id="header_nav_pin">
+					<div class="header_nav_inner">
+						<div class="header_nav_container">
+							<div class="container">
+								<div class="row">
+									<div class="col">
+										<div class="header_nav_content d-flex flex-row align-items-center justify-content-start">
+											<nav class="main_nav">
+												<ul class="d-flex flex-row align-items-center justify-content-start">
+                                                    <li class="active"><a href="">All Medical Reports</a></li>
+													<li><a href="">Latest Medical Report </a></li>
+													<li class="totheright"><a href="bookanappointment">Consult your doctor </a></li> <!--class seems to not be working-->
+
+												</ul>
+											</nav>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+
+    <div class="jumbotron">
+  <div class="container text-center">
+      <div id="head">
+   <h1> Doctor Report and Advisory</h1>
+      </div>
+    <div id="head-p">
+        <p> Your personal medical report corner. </p>
+        <h2> Sort by: </h2>
+    </div>
+
+
+  </div>
+</div>
+{% endblock %}
+
