@@ -11,11 +11,11 @@
 <h2> SETUP </h2>
 <p>App.py needs to run on a local host port</p>
 <p>Set up Python Interpreter configuration and download pycharm modules/packages</p>
-<p>Download: matplotlib, flask, flask-mail, wtforms</p>
+<p>Install: matplotlib, flask, flask-mail, wtforms</p>
 
 <h3>NOTES</h3>
-<p>Website is old and only partially functionable</p>
-<p>Features I want to showcase is stated below in my contributions</p>
+<p>Website is old and only partially functionable.</p>
+<p>Features I want to showcase is stated below in my contributions.</p>
 
 <h2> MY CONTRIBUTION </h2>
 <p>• Patient User Sign-up and Login Procedure and Validation</p>
