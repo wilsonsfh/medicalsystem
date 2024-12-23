@@ -22,8 +22,8 @@ Based on the concept of Electronic Health Records, this website is developed whi
      b. Add reports: Security feature demo-ed - Verification of particular patient's NRIC to be able to add report <br>
      c. Update reports: Logic demoed-ed - Certain fields are restricted as it is tied to the patient's identity <br>
      d. Soft Delete reports: Discard the report, with confirmation prompt <br>
-           -   Patient and Doctor’s View: Patient and Doctor can both soft delete their reports and be able to restore them if needed <br>
-           -   http://127.0.0.1:5000/discardedreports/staffname: Recover reports soft deleted or hard (permanently) delete them <br>
+      - Patient and Doctor’s View: Patient and Doctor can both soft delete their reports and be able to restore them if needed <br>
+      - http://127.0.0.1:5000/discardedreports/staffname: Recover reports soft deleted or hard (permanently) delete them <br>
 
 #### As patient
 1. Sign-up as a patient - http://127.0.0.1:5000/register <br>
