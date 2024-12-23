@@ -1,4 +1,4 @@
-# Medical Online System
+# Online Medical System
 This is a team project following Object-Oriented Programming (OOP) principles, during my polytechnic studies. <br> <br>
 Based on the concept of Electronic Health Records, this website is developed while taking into account security features and convenience for the users who are patients and doctors. <br>
 
