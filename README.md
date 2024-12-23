@@ -15,7 +15,7 @@ Based on the concept of Electronic Health Records, this website is developed whi
 ## Running the program
 ### Some storylines/features
 #### As staff/doctor
-1. login as a staff/doctor - http://127.0.0.1:5000/stafflogin <br>
+1. Login as a staff/doctor - http://127.0.0.1:5000/stafflogin <br>
       ID: Chit Boon, Password: password <br>
 2. Health reports display - http://127.0.0.1:5000/allreports/staffname <br>
      a. Filter reports: by patient's name into the search bar <br>
@@ -26,8 +26,8 @@ Based on the concept of Electronic Health Records, this website is developed whi
            -   http://127.0.0.1:5000/discardedreports/staffname: Recover reports soft deleted or hard (permanently) delete them <br>
 
 #### As patient
-1. sign-up as a patient - http://127.0.0.1:5000/register <br>
-2. login as a patient - http://127.0.0.1:5000/login <br>
+1. Sign-up as a patient - http://127.0.0.1:5000/register <br>
+2. Login as a patient - http://127.0.0.1:5000/login <br>
 3. Navigate the homepage as a patient - http://127.0.0.1:5000/home <br>
     a. View your own health reports created by doctor - http://127.0.0.1:5000/allreports/patient <br>
      
