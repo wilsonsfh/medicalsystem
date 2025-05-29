@@ -1,6 +1,8 @@
 # Online Medical System
 
-An educational project built during my Polytechnic studies to simulate an online Electronic Health Record (EHR) system for doctors and patients. Developed with Object-Oriented Programming (OOP) principles and focused on security, usability, and essential healthcare functionalities.
+A team project built to simulate an online Electronic Health Record (EHR) system for doctors and patients. 
+
+Developed with Object-Oriented Programming (OOP) principles and focused on security, and essential healthcare functionalities.
 
 > *Note: This is a proof-of-concept project and not production-ready.*
 
