@@ -84,13 +84,13 @@ The app will start on `http://127.0.0.1:5000`.
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
 - Language: Python 
 - RESTful Web Framework: Flask
 - Database: `shelve` Python object storage
 - Libraries (some): `matplotlib`, `flask-mail`, `wtforms` 
-Containerisation: Docker & Docker Compose
+- Containerisation: Docker & Docker Compose
 
 ---
 
@@ -110,5 +110,3 @@ Containerisation: Docker & Docker Compose
 - No role-based access control available beyond hardcoded login checks
 
 ---
-
-*This project is not licensed for commercial use. Intended for educational/demo purposes only.*
